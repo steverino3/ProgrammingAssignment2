@@ -2,6 +2,7 @@
 ## functions do
 
 ## Write a short comment describing this function
+## Prepare changes for Prog Asst 2
 
 makeCacheMatrix <- function(x = matrix()) {
 
