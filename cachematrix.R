@@ -1,12 +1,12 @@
-## functions get, set, getinv and set inv
-makeCacheMatrix <- function(x = matrix()) {
+## constructor functions for get, set, setinv and getinv
+makeCacheMatrix <- function(mat = matrix()) {
         inv <- NULL
         set <- function(y) {
-                x <<- y
+                mat <<- y
                 inv <<- NULL
         }
-        get <- function() x
-        setinv <- function(x) x <<- inv
+        get <- function() mat
+        setinv <- function(inverse) inv <<- inverse
         getinv <- function() inv
         list(set = set, get = get, setinv = setinv, getinv = getinv)
 }
@@ -21,7 +21,7 @@ cacheSolve <- function(x, ...) {
                 return(matInv)
         }
         data <- x$get()
-        matInv <- solve(data, ...)
-        x$setinv(x)
+        matInv <- solve(data)
+        x$setinv(matInv)
         matInv
 }
